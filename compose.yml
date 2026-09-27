@@ -1,0 +1,11 @@
+services:
+  diffsignal:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - diffsignal-data:/data
+    restart: unless-stopped
+
+volumes:
+  diffsignal-data:

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DiffSignal</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div><span class="eyebrow">SELF-HOSTED CHANGE MONITOR</span><h1>DiffSignal</h1></div>
+      <p>Know when a page changes.<br>Ignore everything that does not matter.</p>
+    </header>
+
+    <section class="panel add-panel">
+      <h2>Add monitor</h2>
+      <form id="monitor-form">
+        <label>Name<input name="name" required maxlength="120" placeholder="Release notes"></label>
+        <label>Public URL<input name="url" type="url" required placeholder="https://example.com/changelog"></label>
+        <label>Ignore CSS selector<input name="ignore_selector" placeholder=".timestamp, .advertisement"></label>
+        <label>Interval (minutes)<input name="interval_minutes" type="number" min="1" max="10080" value="60"></label>
+        <button type="submit">Start monitoring</button>
+      </form>
+      <p id="form-error" class="error" role="alert"></p>
+    </section>
+
+    <section>
+      <div class="section-title"><h2>Monitors</h2><button id="refresh" class="ghost">Refresh</button></div>
+      <div id="monitors" class="monitor-grid"><p class="muted">Loading…</p></div>
+    </section>
+
+    <dialog id="changes-dialog">
+      <div class="dialog-head"><h2 id="changes-title">Changes</h2><button id="close-dialog" class="ghost">Close</button></div>
+      <div id="changes"></div>
+    </dialog>
+  </main>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
